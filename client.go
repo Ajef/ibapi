@@ -2887,7 +2887,7 @@ func (ic *IbClient) ReqWshEventData(reqID int64, conID int64) {
 		return
 	}
 
-	msg := makeMsgBytes(mREQ_WSH_META_DATA, reqID, conID)
+	msg := makeMsgBytes(mREQ_WSH_EVENT_DATA, reqID, conID)
 
 	ic.reqChan <- msg
 }
