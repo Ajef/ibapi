@@ -5,6 +5,8 @@ style="display: block; margin: 0 auto;"
 src="http://interactivebrokers.github.io/tws-api/nav_iblogo.png"
 />
 
+## This is a fork of https://github.com/francdoc/ibapi and probably won't be updated or in working state use something else
+
 * Interactive Brokers API 9.80
 * pure golang Implement
 * Unofficial, use at you own risk
