@@ -7,7 +7,7 @@ type Contract struct {
 	ContractID      int64
 	Symbol          string
 	SecurityType    string
-	Expiry          string
+	Expiry          string //LastTradingDate YYYYMMDD or LastTradingMonth YYYYMM
 	Strike          float64
 	Right           string
 	Multiplier      string

@@ -177,6 +177,7 @@ func makeMsgBytes(fields ...interface{}) []byte {
 	}
 
 	// add the size header
+	// #nosec G115 — this cast is safe due to declaration above
 	binary.BigEndian.PutUint32(msgBytes, uint32(len(msgBytes)-4))
 
 	return msgBytes
@@ -246,7 +247,7 @@ func handleEmpty(d interface{}) string {
 	}
 }
 
-//InitDefault try to init the object with the default tag, that is a common way but not a efficent way
+// InitDefault try to init the object with the default tag, that is a common way but not a efficent way
 func InitDefault(o interface{}) {
 	t := reflect.TypeOf(o).Elem()
 	v := reflect.ValueOf(o).Elem()

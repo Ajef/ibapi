@@ -189,6 +189,7 @@ func (ic *IbClient) HandShake() error {
 	clientVersion := []byte(fmt.Sprintf("v%d..%d%s", MIN_CLIENT_VER, MAX_CLIENT_VER, connectOptions))
 
 	sizeofCV := make([]byte, 4)
+	// #nosec G115 — this cast is safe due to declaration above
 	binary.BigEndian.PutUint32(sizeofCV, uint32(len(clientVersion)))
 
 	// send head and client version to TWS or Gateway to tell the client version range
@@ -2902,6 +2903,7 @@ func (ic *IbClient) CancelWshEventData(reqID int64) {
 
 	ic.reqChan <- msg
 }
+
 //--------------------------three major goroutine -----------------------------------------------------
 /*
 1.goReceive scan a whole msg bytes and put it into msgChan
@@ -2909,7 +2911,7 @@ func (ic *IbClient) CancelWshEventData(reqID int64) {
 3.goRequest create a select loop to get request from reqChan and send it to tws or ib gateway
 */
 
-//goRequest will get the req from reqChan and send it to TWS
+// goRequest will get the req from reqChan and send it to TWS
 func (ic *IbClient) goRequest() {
 	log.Debug("requester start")
 	defer func() {
@@ -2950,8 +2952,8 @@ requestLoop:
 
 }
 
-//goReceive receive the msg from the socket, get the fields and put them into msgChan
-//goReceive handle the msgBuf which is different from the offical.Not continuously read, but split first and then decode
+// goReceive receive the msg from the socket, get the fields and put them into msgChan
+// goReceive handle the msgBuf which is different from the offical.Not continuously read, but split first and then decode
 func (ic *IbClient) goReceive() {
 	log.Debug("receiver start")
 	defer func() {
@@ -2966,7 +2968,9 @@ func (ic *IbClient) goReceive() {
 			select {
 			case <-ic.terminatedSignal:
 			default:
-				ic.Disconnect()
+				if err := ic.Disconnect(); err != nil {
+					log.Error("Disconnect error: %v", zap.Error(err))
+				}
 			}
 		}
 	}()
@@ -3001,7 +3005,7 @@ func (ic *IbClient) goReceive() {
 
 }
 
-//goDecode decode the fields received from the msgChan
+// goDecode decode the fields received from the msgChan
 func (ic *IbClient) goDecode() {
 	log.Debug("decoder start")
 	defer func() {
@@ -3063,7 +3067,9 @@ func (ic *IbClient) LoopUntilDone(fs ...func()) error {
 	go func() {
 		select {
 		case <-ic.ctx.Done():
-			ic.Disconnect()
+			if err := ic.Disconnect(); err != nil {
+				log.Error("Disconnect error: %v", zap.Error(err))
+			}
 		}
 	}()
 
@@ -3071,5 +3077,4 @@ func (ic *IbClient) LoopUntilDone(fs ...func()) error {
 	case <-ic.done:
 		return ic.err
 	}
-
 }
