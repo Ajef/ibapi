@@ -8,7 +8,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/scmhub/ibapi/protobuf"
+	"github.com/ajef/ibapi/protobuf"
 	"google.golang.org/protobuf/proto"
 )
 

@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strconv"
 
-	"github.com/scmhub/ibapi/protobuf"
+	"github.com/ajef/ibapi/protobuf"
 )
 
 func createExecutionFilterProto(execFilter *ExecutionFilter) *protobuf.ExecutionFilter {

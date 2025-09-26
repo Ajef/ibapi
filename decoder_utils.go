@@ -4,7 +4,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/scmhub/ibapi/protobuf"
+	"github.com/ajef/ibapi/protobuf"
 )
 
 func decodeContract(contractProto *protobuf.Contract) *Contract {

@@ -3,7 +3,7 @@ package ibapi
 import (
 	"time"
 
-	"github.com/scmhub/ibapi/protobuf"
+	"github.com/ajef/ibapi/protobuf"
 )
 
 // EWrapper contains the function to handle incoming messages from TWS or Gateway

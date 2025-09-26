@@ -1,5 +1,5 @@
-[![Go Report Card](https://goreportcard.com/badge/github.com/scmhub/ibapi)](https://goreportcard.com/report/github.com/scmhub/ibapi)
-[![Go Reference](https://pkg.go.dev/badge/github.com/scmhub/ibapi.svg)](https://pkg.go.dev/github.com/scmhub/ibapi)
+[![Go Report Card](https://goreportcard.com/badge/github.com/ajef/ibapi)](https://goreportcard.com/report/github.com/ajef/ibapi)
+[![Go Reference](https://pkg.go.dev/badge/github.com/ajef/ibapi.svg)](https://pkg.go.dev/github.com/ajef/ibapi)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 # Unofficial Golang Interactive Brokers API
@@ -22,7 +22,7 @@
 Install the package via `go get`:
 
 ```bash
-go get -u github.com/scmhub/ibapi
+go get -u github.com/ajef/ibapi
 ```
 
 ## Usage
@@ -36,7 +36,7 @@ import (
 	"math/rand"
 	"time"
 
-	"github.com/scmhub/ibapi"
+	"github.com/ajef/ibapi"
 )
 
 const (
@@ -73,7 +73,7 @@ func main() {
 }
 ```
 
-For more information on how to use this package, please refer to the [GoDoc](https://pkg.go.dev/github.com/scmhub/ibapi) documentation.
+For more information on how to use this package, please refer to the [GoDoc](https://pkg.go.dev/github.com/ajef/ibapi) documentation.
 
 ## Acknowledgments
 
