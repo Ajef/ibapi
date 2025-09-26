@@ -1,4 +1,4 @@
-module github.com/scmhub/ibapi
+module github.com/ajef/ibapi
 
 go 1.25
 
